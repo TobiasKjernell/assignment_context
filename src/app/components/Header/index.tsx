@@ -2,7 +2,7 @@ import { useUser } from "@/contexts/userContext";
 import Image from "next/image";
 
 const Header = () => {
-    const {user, updateName} = useUser();
+    const {user, updateUser: updateName} = useUser();
     return (
         <div className="bg-[#ffedc2]  flex items-center relative border-1 justify-between">
             <Image src="/kitchenLogo.webp" width={100} height={100} alt='kitchenLogo' className="rounded-b-xl" />

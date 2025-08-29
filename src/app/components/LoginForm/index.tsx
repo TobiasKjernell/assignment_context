@@ -10,7 +10,7 @@ const LoginForm = () => {
     const [nameInput, setNameInput] = useState<string>('')
     const [passwordInput, setPasswordInput] = useState<string>('')
     const [wrongInformation, setWrongInformation] = useState<boolean>(false);
-    const { updateName } = useUser();
+    const { updateUser } = useUser();
 
     const handleNameInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
@@ -29,8 +29,7 @@ const LoginForm = () => {
         const userLoginValidate = userAccounts.filter(item => item.name === nameInput && item.password === passwordInput)
 
         if (userLoginValidate.length > 0) {
-            updateName(nameInput);
-            redirect('/')
+            updateUser(userLoginValidate[0].user);
         } else
             setWrongInformation(true);
 
