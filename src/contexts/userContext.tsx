@@ -9,11 +9,11 @@ export interface IUser {
 }
 
 interface IUserContext {
-    user: IUser,
+    user: IUser
     deleteRecipe: (mealID: string) => void;
     addRecipe: (mealIdAndName: IRecipe) => void;
     updateCategory: (cat: string) => void;
-    updateUser: (name: IUser) => void;
+    updateUser: (currentUser: IUser | null) => void;
     addCountry: (country: ICountry) => void;
     deleteCountry: (country: string) => void;
 }
@@ -24,7 +24,7 @@ type UserActions =
     | { type: 'updateCategory', payload: string }
     | { type: 'addRecipe', payload: IRecipe }
     | { type: 'deleteRecipe', payload: string }
-    | { type: 'updateUser', payload: IUser }
+    | { type: 'updateUser', payload: IUser | null}
     | { type: 'addCountry', payload: ICountry }
     | { type: 'deleteCountry', payload: string }
 
@@ -35,9 +35,9 @@ const inititalState: IUser = {
     favCountries: []
 }
 
-const reducer = (state: IUser, action: UserActions): IUser => {
+const reducer = (state: IUser, action: UserActions ): IUser => {
     switch (action.type) {
-        case 'updateUser': return { ...action.payload };
+        case 'updateUser': return action.payload ? action.payload : inititalState;
         case 'addRecipe': return { ...state, favRecipes: [...state.favRecipes, action.payload] };
         case 'addCountry': return { ...state, favCountries: [...state.favCountries, action.payload] };
         case 'updateCategory': return { ...state, favCat: action.payload };
@@ -52,7 +52,7 @@ const UserContextProvider = ({ children }: { children: React.ReactNode }) => {
     const [{ name, favRecipes, favCat, favCountries }, dispatch] = useReducer(reducer, inititalState)
 
     const deleteRecipe = (mealID: string) => dispatch({ type: 'deleteRecipe', payload: mealID });
-    const updateUser = (name: IUser) => dispatch({ type: 'updateUser', payload: name })
+    const updateUser = (name: IUser | null) => dispatch({ type: 'updateUser', payload: name })
     const updateCategory = (cat: string) => dispatch({ type: 'updateCategory', payload: cat })
     const addRecipe = (meal: IRecipe) => dispatch({ type: 'addRecipe', payload: meal })
     const addCountry = (country: ICountry) => dispatch({ type: 'addCountry', payload: country })

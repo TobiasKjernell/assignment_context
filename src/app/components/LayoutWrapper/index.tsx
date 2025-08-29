@@ -13,7 +13,7 @@ const LayoutWrapper = ({ children }: { children: React.ReactNode }) => {
     return (
         <>
             <div className="flex flex-col h-full">
-                {!user.name ?
+                {!user?.name ?
                     <Login /> :
                     <>
                         <Header />
