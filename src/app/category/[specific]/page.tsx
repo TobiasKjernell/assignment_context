@@ -2,6 +2,7 @@
 
 import { IMeals } from "@/lib/interfaces";
 import { getSpecificCategory } from "@/services/apiMealDb";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -23,8 +24,8 @@ const Specific = ({ params }: { params: Promise<{ specific: string }> }) => {
 
     if (isLoading) return <div>is loading...</div>
     return (
-        <div className="grid grid-rows-1 grid-cols-4 gap-2 mt-2">
-            {mealsData && mealsData.meals?.map(item => <Link className="border border-amber-400" href={`/recipes/${item.idMeal}`} key={item.idMeal}>{item.strMeal}</Link>)}
+        <div className="grid grid-rows-1 grid-cols-1 sm:grid-cols-4 gap-2 mt-2">
+             {mealsData && mealsData.meals?.map(item => <Link className="bg-amber-200 flex justify-center flex-col lg: text-xl text-center" href={`/recipes/${item.idMeal}`} key={item.idMeal}><Image className="w-auto" src={item.strMealThumb} alt={item.strMeal} height={300} width={300} />{item.strMeal}</Link>)}
         </div>
     )
 

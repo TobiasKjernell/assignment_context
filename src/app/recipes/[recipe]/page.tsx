@@ -35,10 +35,10 @@ const Recipe = ({ params }: { params: Promise<{ recipe: string }> }) => {
         <>
             {recipeDataSaved &&
                 <div className="flex flex-col items-center justify-center p-10">
-                    <div className="w-[600px]">
+                    <div className="w-auto md:w-[600px]">
                     <button className={`cursor-pointer ${user!.favRecipes.find(el => el.id === recipeDataSaved!.id) ? 'bg-amber-200' : 'bg-amber-500'}`} onClick={handleClick}>{user!.favRecipes.find(el => el.id === recipeDataSaved!.id) ? 'Remove from favourites' : 'Add to favourites'}</button>
                     <div className="flex flex-col shadow-2xl">
-                        <Image className="h-auto"  src={recipeDataSaved.image} width={300} height={100} alt={recipeDataSaved.name} />
+                        <Image className="h-auto w-auto"  src={recipeDataSaved.image} width={300} height={100} alt={recipeDataSaved.name} />
                         <p className="p-3">{recipeDataSaved && recipeDataSaved.instructions}</p>
                     </div>
                     <Link className="bg-blue-500" href={`/category/${recipeDataSaved.category}`}> Back </Link>

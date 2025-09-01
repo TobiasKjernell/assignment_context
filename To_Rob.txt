@@ -1,0 +1,8 @@
+only designed login, gave up on design since i wont have time, 
+found out i need 2week to fix cv/coverletter and do all the 'LIA' assignments before we start with backend ( full focus then ).
+
+User1: Rob
+Passwerd: 123 
+
+User2: Tobias
+Password: 123

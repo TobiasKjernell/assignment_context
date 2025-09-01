@@ -37,14 +37,14 @@ const LoginForm = () => {
 
     return (
         <div className="flex flex-col items-center justify-center bg-gray-950/50 p-10 rounded-2xl shadow-2xl shadow-black backdrop-blur-[3px] ">
-            <Image src="/kitchenLogo.webp" width={200} height={200} alt='kitchenLogo' />
+            <Image src="/kitchenLogo.webp" className="md:w-[200px] md:h-[200px]" width={300} height={300} alt='kitchenLogo' />
             {wrongInformation && <p className="text-red-500 font-bold">Wrong password or name</p>}
-            <form className="flex flex-col text-white mt-5">
+            <form className="flex flex-col text-white mt-5 w-full">
                 <label htmlFor="username">Username</label>
                 <input className="bg-white text-black text-center" type="text" id="username" value={nameInput} onChange={e => handleNameInput(e)} />
                 <label htmlFor="password">Password</label>
                 <input id="password" className="bg-white text-black text-center" type="password" value={passwordInput} onChange={e => handlePasswordInput(e)} />
-                <button disabled={nameInput === '' || passwordInput === ''} onClick={e => handleSubmit(e)} className="disabled:text-white/50 disabled:bg-gray-600/50 disabled:cursor-not-allowed cursor-pointer bg-gray-500 text-white ">Login</button>
+                <button disabled={nameInput === '' || passwordInput === ''} onClick={e => handleSubmit(e)} className="disabled:text-white/50 disabled:bg-gray-600/50 disabled:cursor-not-allowed cursor-pointer bg-gray-500 text-white p-4">Login</button>
             </form>
         </div>
     )

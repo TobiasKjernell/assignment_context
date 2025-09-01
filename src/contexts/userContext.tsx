@@ -18,9 +18,9 @@ interface IUserContext {
     deleteCountry: (country: string) => void;
 }
 
-export const UserContext = createContext<IUserContext | null>(null)
+const UserContext = createContext<IUserContext | null>(null)
 
-type UserActions =
+type UserActions =  
     | { type: 'updateCategory', payload: string }
     | { type: 'addRecipe', payload: IRecipe }
     | { type: 'deleteRecipe', payload: string }
@@ -63,7 +63,7 @@ const UserContextProvider = ({ children }: { children: React.ReactNode }) => {
         deleteRecipe: deleteRecipe,
         addRecipe: addRecipe,
         updateCategory: updateCategory,
-        updateUser: updateUser,
+        updateUser: updateUser,     
         addCountry: addCountry,
         deleteCountry: deleteCountry
     }}>{children}</UserContext.Provider>
@@ -76,3 +76,5 @@ const useUser = () => {
 }
 
 export { useUser, UserContextProvider };
+
+

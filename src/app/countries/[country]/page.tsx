@@ -21,11 +21,11 @@ const Country = ({ params }: { params: Promise<{ country: string }> }) => {
         fetcher();
     }, [params])
 
-    if (isLoading) return <div>is loading...</div>
+    if (isLoading) return <div>is loading...</div>  
     return (
         <>
-            <div className="grid grid-cols-[300px_300px_300px] grid-rows-auto justify-center gap-7">
-                {mealsData && mealsData.meals?.map(item => <Link className="bg-amber-200" href={`/recipes/${item.idMeal}`} key={item.idMeal}><Image src={item.strMealThumb} alt={item.strMeal} height={300} width={300} />{item.strMeal}</Link>)}
+            <div className="grid grid-cols-1 sm:grid-cols-4 grid-rows-auto justify-center items-center gap-7">
+                {mealsData && mealsData.meals?.map(item => <Link className="bg-amber-200 flex justify-center flex-col lg: text-xl text-center" href={`/recipes/${item.idMeal}`} key={item.idMeal}><Image className="w-auto" src={item.strMealThumb} alt={item.strMeal} height={300} width={300} />{item.strMeal}</Link>)}
 
             </div>
             <Link href='/countries'>Back</Link>

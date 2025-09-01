@@ -15,7 +15,7 @@ const Countries = () => {
     }, [])
 
     return (
-        <div className="grid grid-rows-3 grid-cols-3 gap-2 mt-2">
+        <div className="grid grid-rows-3 grid-cols-1 md:grid-cols-3 gap-2 mt-2">
             {allCountries && allCountries.meals.map((item,index )=> <CountryItem key={index} {...item} /> )}
         </div>
     )
